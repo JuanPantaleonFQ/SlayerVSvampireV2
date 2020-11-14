@@ -1,5 +1,7 @@
 package control;
 
+import logic.Game;
+
 public abstract class Command{
 	
 	
