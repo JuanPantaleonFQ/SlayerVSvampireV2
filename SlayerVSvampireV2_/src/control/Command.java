@@ -1,6 +1,6 @@
 package control;
 
-import logic.Game;
+//import logic.Game;
 
 public abstract class Command{
 	
