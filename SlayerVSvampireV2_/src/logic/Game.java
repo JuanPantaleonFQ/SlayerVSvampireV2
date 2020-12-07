@@ -70,7 +70,7 @@ public class Game implements IPrintable{
 	public void reset() {
 		Vampire.setTotalv(0);
 		Vampire.setVampiresOnB(0);
-		GameObject.setCnt(0);
+		//deletevampires.
 		init(this.seed);
 	}
 	
@@ -78,14 +78,12 @@ public class Game implements IPrintable{
 	//EJECUCION DE UN CICLO
 	public void computerActions() {
 		this.update();
-		this.attack();
+		board.attack();
 		this.addVampire();
-		this.removeObjects();
-	}
-	
-	private void removeObjects() {
 		board.removeDeadObjects();
 	}
+	
+	
 
 	public void update() {
 		this.cycles++;
@@ -104,7 +102,7 @@ public class Game implements IPrintable{
 	public void addVampire() {
 		int posX = Math.abs(r.nextInt() % level.getDimX()); 
 		if((r.nextDouble() <= level.getVampireFrequency()) && (board.positionAvaible(posX, level.getDimY()-1)) && ((level.getNumberOfVampires()-Vampire.getTotalv()) > 0))  {
-			board.addnewVampire(new Vampire(posX, level.getDimY()-1, this));
+			board.addnewObject(new Vampire(posX, level.getDimY()-1 ,this));
 		}
 	}
 	
@@ -115,7 +113,7 @@ public class Game implements IPrintable{
 	public boolean addSlayer(int x, int y) {
 		boolean ok = false;
 		if(player.areCoins() && board.positionAvaible(x, y) && x <= level.getDimX()-1 && y < level.getDimY()-1) {
-			board.addnewSlayer(new Slayer(x,y,this));
+			board.addnewObject(new Slayer(x,y,this));
 			ok = true;
 			player.setCoins(-50);
 		}

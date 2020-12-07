@@ -1,81 +1,40 @@
 package logic.GameObjects;
-import java.util.ArrayList;
+
+
+import logic.GameObjects.GameObjectList;
 
 public class GameObjectBoard {
-	private ArrayList<GameObject> gameobjects;
+	private GameObjectList list;
 	
 	public GameObjectBoard() {
-		this.gameobjects = new ArrayList<GameObject>();
+		this.list = new GameObjectList();
 	}
 	
 	public boolean positionAvaible(int x, int y) {
-		boolean avaible = true;
-		int i = 0;
-		while( i < GameObject.cnt && avaible) {
-			if(gameobjects.get(i).equals(x,y)) {
-				avaible = false;
-			}
-			i++;
-		}
-		return avaible;
+		return list.positionAvaible(x, y);
 	}
 	
 	public void advance() {
-		for(int i = 0; i < GameObject.cnt; i++) {
-			gameobjects.get(i).advance();
-		}
+		list.advance();
 	}
 	
-	public void addnewVampire(Vampire v) {
-		gameobjects.add(v);
-	}
-	
-	public void addnewSlayer(Slayer s) {
-		gameobjects.add(s);
+	public void addnewObject(GameObject o) {
+		list.addnewObject(o);
 	}
 
 	public IAttack getAttackableInPosition(int x, int y) {
-		IAttack other = null;
-		boolean found = false;
-		int i = 0;
-		while(!found && i < GameObject.getCnt() ) {
-			if(gameobjects.get(i).equals2(x,y) && !gameobjects.get(i).equals(x,y+1)) {
-				other = gameobjects.get(i);
-				found = true;
-			}
-			i++;
-		}
-		return other;
+		return list.getAttackableInPosition(x, y);
 	}
 
 	public void attack() {
-		for(int i = 0; i < GameObject.cnt; i++) {
-			gameobjects.get(i).attack();
-		}
+		list.attack();
 	}
 
 	public String getPositionToString(int x, int y) {
-		String pos = "       ";
-		boolean found = false;
-		int i = 0;
-		while(!found && i < GameObject.getCnt() ) {
-			if(gameobjects.get(i).equals(x,y)) {
-				pos = gameobjects.get(i).toString();
-				found = true;
-			}
-			i++;
-		}
-		return pos;
+		return list.getPositionToString(x, y);
 	}
 	
 	public void removeDeadObjects() {
-		for(int i = 0; i < GameObject.cnt; i++) {
-			if(!gameobjects.get(i).isAlive()) {
-				gameobjects.get(i).setCnt();
-				gameobjects.remove(i);
-			}
-		}
+		list.removeDeadObjects();
 	}
-	
-	
 }

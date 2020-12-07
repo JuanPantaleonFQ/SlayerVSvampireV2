@@ -1,15 +1,19 @@
 package control.Commands;
 
+import control.CommandGenerator;
 import logic.Game;
 
 public class HelpCommand extends Command {
 
-	public HelpCommand(String name, String shortcut, String details, String help) {
-		super(name, shortcut, details, help);
+	public HelpCommand() {
+		this.name = String.format("help");
+		this.shortcut = String.format("h");
+		this.help = String.format("[h]elp");
+		this.details = String.format("how this help");
 	}
 
 	public boolean execute(Game game) {
-		System.out.println(Game.helpMsg);
+		System.out.println(CommandGenerator.commandHelp());
 		return false;
 	}
 

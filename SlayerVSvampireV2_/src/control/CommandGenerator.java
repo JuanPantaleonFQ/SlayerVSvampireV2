@@ -8,11 +8,11 @@ import control.Commands.UpdateCommand;
 
 public class CommandGenerator {
 	private static Command[] avaibleCommands = {
-			new AddCommand("add", "a", "", ""),
-			new HelpCommand("help", "h", "", ""),
-			new ResetCommand("reset", "r", "", ""),
-			new ExitCommand("exit", "e", "", ""),
-			new UpdateCommand("none", "n", "", "")
+			new AddCommand(),
+			new HelpCommand(),
+			new ResetCommand(),
+			new ExitCommand(),
+			new UpdateCommand()
 	};
 
 	public static Command parse(String[] parameters) {
@@ -25,6 +25,13 @@ public class CommandGenerator {
 		return c;
 	}
 	
+	public static String commandHelp() {
+		String help = "";
+		for(int i = 0; i<5; i++) {
+			help = help + avaibleCommands[i].helpText();
+		}
+		return help;
+	}
 	
 	
 	

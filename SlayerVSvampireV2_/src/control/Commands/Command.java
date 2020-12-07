@@ -4,21 +4,16 @@ import logic.Game;
 
 public abstract class Command {
 
-	  protected final String name;
-	  protected final String shortcut;
-	  private final String details; 
-	  private final String help;
+	  protected String name;
+	  protected String shortcut;
+	  protected String details; 	//como se ejecuta '[a]dd X Y'
+	  protected String help;		// describir lo que hace el comando (este comando añade un slayer en la posicion X Y)
 
 	  protected static final String incorrectNumberOfArgsMsg = "Incorrect number of arguments";
 	  protected static final String incorrectArgsMsg = "Incorrect arguments format";
 	  protected static final String incorrectPosition = "Incorrec position, element already exists or position is out of range";
 	  
-	  public Command(String name,  String shortcut, String details, String help){    
-	    this.name = name;
-	    this.shortcut = shortcut;
-	    this.details = details;
-	    this.help = help;
-	  }
+	  public Command(){}
 	  
 	  public abstract boolean execute(Game game);
 	  
@@ -42,6 +37,6 @@ public abstract class Command {
 	  }
 	  
 	  public String helpText(){
-	    return details + ": " + help + "\n";
+	    return help + ": " + details + "\n";
 	  }
 }

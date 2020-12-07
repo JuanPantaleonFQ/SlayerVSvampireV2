@@ -15,10 +15,7 @@ public class Vampire extends GameObject {
 		Vampire.totalv++;
 		this.info = "V";
 	}
-	
-	public boolean equals2(int x, int y) {
-		return (this.x == x && this.y > (y+1));
-	}
+		
 	
 	public static int getVampiresOnB() {
 		return vampiresOnB;
@@ -35,7 +32,6 @@ public class Vampire extends GameObject {
 	}
 	
 	public void setCnt() {
-		GameObject.cnt--;
 		Vampire.vampiresOnB--;
 	}
 

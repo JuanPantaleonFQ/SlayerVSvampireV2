@@ -3,12 +3,23 @@ package control.Commands;
 import logic.Game;
 
 public class AddCommand extends Command {
-	int x;
-	int y;
-	public AddCommand(String name, String shortcut, String details, String help) {
-		super(name, shortcut, details, help);
+	private int x;
+	private int y;
+	public AddCommand() {
+		this.name = String.format("add");
+		this.shortcut = String.format("a");
+		this.help = String.format("[a]dd <x> <y>");
+		this.details = String.format("add a slayer in position x, y");
 	}
-
+	
+	public AddCommand(int x, int y) {
+		this.name = String.format("add");
+		this.shortcut = String.format("a");
+		this.help = String.format("[a]dd <x> <y>");
+		this.details = String.format("add a slayer in position x, y");
+		this.x = x;
+		this.y = y;
+	}
 
 	public boolean execute(Game game) {
 		boolean ok = false;

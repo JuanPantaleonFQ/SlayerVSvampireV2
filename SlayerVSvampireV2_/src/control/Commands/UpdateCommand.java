@@ -3,8 +3,11 @@ package control.Commands;
 import logic.Game;
 
 public class UpdateCommand extends Command{
-	public UpdateCommand(String name, String shortcut, String details, String help) {
-		super(name, shortcut, details, help);
+	public UpdateCommand() {
+		this.name = String.format("none");
+		this.shortcut = String.format("n");
+		this.help = String.format("[n]one | []");
+		this.details = String.format("update");
 	}
 
 	public boolean execute(Game game) {

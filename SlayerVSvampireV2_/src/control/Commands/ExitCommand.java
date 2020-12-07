@@ -3,10 +3,12 @@ package control.Commands;
 import logic.Game;
 
 public class ExitCommand extends Command{
-	public ExitCommand(String name, String shortcut, String details, String help) {
-		super(name, shortcut, details, help);
+	public ExitCommand() {
+		this.name = String.format("exit");
+		this.shortcut = String.format("e");
+		this.help = String.format("[e]xit");
+		this.details = String.format("exit game");
 	}
-
 	public boolean execute(Game game) {
 		game.setFin(true);
 		game.setWinnerMessage(0);

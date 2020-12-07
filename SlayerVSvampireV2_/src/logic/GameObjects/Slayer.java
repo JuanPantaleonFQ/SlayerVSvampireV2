@@ -11,13 +11,13 @@ public class Slayer extends GameObject{
 
 	public void advance() {} //no se implementa 
 
-	
+	protected void setCnt() {} //no se implementa
 	
 
 	boolean equals2(int x, int y) {
 		return (this.x == x && this.y == y);
 	}
-	
+	//tener bucle encima de other.reciveSlayeratack recibimos los interfaces que pedimos, y en cuanto un interFAZ devuelva true se para.
 	public void attack() {
 		if(isAlive()) {
 			IAttack other = game.getAttackableInPosition(x, y-1);
@@ -32,9 +32,7 @@ public class Slayer extends GameObject{
 		return true;
 	}
 
-	protected void setCnt() {
-		GameObject.cnt--;
-	}
+	 
 	
 
 	
