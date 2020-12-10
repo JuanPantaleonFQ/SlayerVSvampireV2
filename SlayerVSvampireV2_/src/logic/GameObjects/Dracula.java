@@ -24,18 +24,15 @@ public class Dracula extends Vampire {
 	
 	
 	//metodos
-	public boolean receiveSlayerAttack(int max) {
-		this.health = this.health - max;
-		return true;
-	}
+	
 	
 	
 	//metodo de ataque para dracula
-	public void DraculaAttack() {
+	public void Attack() {
 		if (isAlive()) {
 			IAttack other = game.getAttackableInPosition(x, y-1);
 			if (other != null) {
-				other.receiveDraculaAttack();
+				other.receiveVampireAttack(HARMD);
 			}	
 		}
 		
@@ -69,6 +66,9 @@ public class Dracula extends Vampire {
 	}
 	
 	
+	public boolean receiveFlashAttack() {
+		return false;
+	}
 	
 	
 	

@@ -1,8 +1,6 @@
 package logic;
 
 import java.util.Random;
-
-
 import logic.GameObjects.*;
 import logic.GameObjects.GameObjectBoard;
 import view.GamePrinter;
@@ -18,6 +16,8 @@ public class Game implements IPrintable{
 	private GamePrinter printer;   
 	private int winnerMessage;
 	private Long seed;
+	
+	
 	
 	public static final String helpMsg = String.format(
 			"Available commands:%n" +
@@ -80,6 +80,7 @@ public class Game implements IPrintable{
 		this.update();
 		board.attack();
 		this.addVampire();
+		this.addDracula();
 		board.removeDeadObjects();
 	}
 	
@@ -97,6 +98,21 @@ public class Game implements IPrintable{
 	
 	public void attack() {
 		board.attack();
+	}
+	
+	public void addDracula() {
+		if (Dracula.getDraculasOnBoard() > 0) {
+			System.out.println("[ERROR]: Dracula is already alive.");
+		}
+		else {
+			int posX = Math.abs(r.nextInt() % level.getDimX());
+			if ((r.nextDouble() <= level.getVampireFrequency()) && (board.positionAvaible(posX, level.getDimY()-1)) && ((level.getNumberOfVampires()-Vampire.getTotalv()) > 0)) {
+				board.addnewObject(new Dracula(posX,level.getDimY()-1,this));
+				System.out.println("Dracula is alive");
+			}
+		}
+		
+		
 	}
 	
 	public void addVampire() {

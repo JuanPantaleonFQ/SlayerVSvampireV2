@@ -37,4 +37,7 @@ public class GameObjectBoard {
 	public void removeDeadObjects() {
 		list.removeDeadObjects();
 	}
+	
+	
+	
 }

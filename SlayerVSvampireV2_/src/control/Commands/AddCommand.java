@@ -13,10 +13,7 @@ public class AddCommand extends Command {
 	}
 	
 	public AddCommand(int x, int y) {
-		this.name = String.format("add");
-		this.shortcut = String.format("a");
-		this.help = String.format("[a]dd <x> <y>");
-		this.details = String.format("add a slayer in position x, y");
+		this();	//llama al constructor
 		this.x = x;
 		this.y = y;
 	}

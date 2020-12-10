@@ -31,12 +31,7 @@ public class Slayer extends GameObject{
 		this.health = this.health - max;
 		return true;
 	}
-	//metodo que recibe un ataque de dracula y mata el slayer
-	public boolean receiveDraculaAttack() {
-		 this.health = 0;
-		 return true;
-	}
-
+	
 	 
 	
 
