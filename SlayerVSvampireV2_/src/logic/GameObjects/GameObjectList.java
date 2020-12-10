@@ -71,7 +71,7 @@ public class GameObjectList {
 	public void removeDeadObjects() {
 		for(int i = 0; i < gameobjects.size(); i++) {
 			if(!gameobjects.get(i).isAlive()) {
-				gameobjects.get(i).setCnt(); 		//como solo los objetos de tipo vampiro tienen el metodo
+				gameobjects.get(i).setCnt(); 		//como solo los objetos de tipo vampiro tienen el metodo setCnt
 				gameobjects.remove(i);
 			}
 		}
