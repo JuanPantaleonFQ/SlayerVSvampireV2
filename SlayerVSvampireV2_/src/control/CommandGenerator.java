@@ -4,6 +4,7 @@ import control.Commands.Command;
 import control.Commands.ExitCommand;
 import control.Commands.HelpCommand;
 import control.Commands.ResetCommand;
+import control.Commands.SuperCoinsCommand;
 import control.Commands.UpdateCommand;
 
 public class CommandGenerator {
@@ -12,13 +13,14 @@ public class CommandGenerator {
 			new HelpCommand(),
 			new ResetCommand(),
 			new ExitCommand(),
-			new UpdateCommand()
+			new UpdateCommand(),
+			new SuperCoinsCommand(),
 	};
 
 	public static Command parse(String[] parameters) {
 		int i = 0;
 		Command c = null;
-		while(c == null && i < 5) {
+		while(c == null && i < 6) {
 			c = avaibleCommands[i].parse(parameters);
 			i++;
 		}
@@ -27,7 +29,7 @@ public class CommandGenerator {
 	
 	public static String commandHelp() {
 		String help = "";
-		for(int i = 0; i<5; i++) {
+		for(int i = 0; i<6; i++) {
 			help = help + avaibleCommands[i].helpText();
 		}
 		return help;
