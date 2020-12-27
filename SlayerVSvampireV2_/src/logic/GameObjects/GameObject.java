@@ -34,4 +34,11 @@ public abstract class GameObject implements IAttack{
 	public String toString() {
 		return " " + this.info + " [" + this.health + "] ";
 	}
+
+	public boolean outOfBounds() {
+		
+		return (this.y == game.getDimY());
+	}
+
+	
 }

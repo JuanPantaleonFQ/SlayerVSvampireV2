@@ -2,3 +2,14 @@
 
 Stage:
 7/12/2020-23:06-> Ya esta la version 2 parte 1 completada y corregida.
+27/12/2020-18:18 -> Ya esta puesto explosive vampire, coins y añadido(modificando) en game addAttackObject y addDefensiveObject.
+
+
+
+
+NOTAS:
+--Desde game hacemos las comprobaciones de monedas de jugador y las restamos siempre.
+-- Las acciones de los comandos sobre objetos de tipo GameObjects(vampire,slayer,explosive vampire,dracula,
+	 las programamos en Iattack y cada objeto las implementa como el deberia.
+
+

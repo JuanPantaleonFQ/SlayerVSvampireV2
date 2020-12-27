@@ -141,7 +141,13 @@ public class Game implements IPrintable{
 	}
 	
 	//metodo utilizado para el comando addvampireCommand:
-	//public boolean addVampireCommand() {}
+	public boolean addVampireCommand() {
+		
+		
+		
+		
+		return fin;
+	}
 	
 	public boolean positionAvaible(int x, int y) {
 		return board.positionAvaible(x, y);
@@ -183,6 +189,16 @@ public class Game implements IPrintable{
 
 	public void setCoins(int coins) {
 		player.setCoins(coins);
+	}
+	
+	public boolean garlicPush() {
+		boolean executedCommand  = false;
+		if (player.areCoins(10)) {
+			player.setCoins(-10);
+			board.GarlicPush();
+			executedCommand = true;
+		}
+		return executedCommand;
 	}
 	
 }

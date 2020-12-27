@@ -12,7 +12,7 @@ public interface IAttack {
 	
 	
 	//default boolean receiveLightFlash() {return false;};
-	//default boolean receiveGarlicPush() {return false;};
+	default boolean receiveGarlicPush() {return false;};
 	
 	default void damageExplosive() {};
 	

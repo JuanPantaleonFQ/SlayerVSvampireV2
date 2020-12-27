@@ -12,6 +12,7 @@ public abstract class Command {
 	  protected static final String incorrectNumberOfArgsMsg = "Incorrect number of arguments";
 	  protected static final String incorrectArgsMsg = "Incorrect arguments format";
 	  protected static final String incorrectPosition = "Incorrec position, element already exists or position is out of range";
+	  protected static final String notEnoughtCoins = "You don't have enough coins";
 	  
 	  public Command(){}
 	  

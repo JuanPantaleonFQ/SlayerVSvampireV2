@@ -78,6 +78,23 @@ public class GameObjectList {
 			}
 		}
 	}
+
+	public void GarlicPush() {
+		for (int i = 0; i < gameobjects.size(); i++) {
+			if (gameobjects.get(i).isAlive()) {
+				if (gameobjects.get(i).receiveGarlicPush() && gameobjects.get(i).outOfBounds()) {
+					gameobjects.get(i).setAlive();
+					gameobjects.get(i).setCnt();
+					gameobjects.remove(i);
+					
+					
+				}
+				
+			}
+		}
+		
+		
+	}
 	
 	
 

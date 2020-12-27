@@ -38,6 +38,10 @@ public class GameObjectBoard {
 		list.removeDeadObjects();
 	}
 	
+	public void GarlicPush() {
+		list.GarlicPush();
+	}
+	
 	
 	
 }
