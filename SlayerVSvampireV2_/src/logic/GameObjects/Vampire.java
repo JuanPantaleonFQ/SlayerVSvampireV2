@@ -74,5 +74,9 @@ public class Vampire extends GameObject {
 		this.health = this.health - max;
 		return true;
 	}
+
+
+	@Override
+	protected void setAlive() {}
 	
 }

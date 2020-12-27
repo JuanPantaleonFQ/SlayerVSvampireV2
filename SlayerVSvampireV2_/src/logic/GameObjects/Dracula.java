@@ -6,7 +6,7 @@ import logic.Game;
 public class Dracula extends Vampire {
 	
 	//Atributtes:
-	private static boolean DraculaOnBoard;
+	private static boolean DraculaOnBoard = false;
 	private int progress;
 	
 	//Constructor:
@@ -39,6 +39,12 @@ public class Dracula extends Vampire {
 		return DraculaOnBoard;
 		
 	}
+	
+	public void setAlive() {
+		 Dracula.DraculaOnBoard = false;
+	}
+	
+	
 	
 	
 	public void advance(){

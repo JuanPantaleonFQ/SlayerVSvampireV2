@@ -116,6 +116,13 @@ public class Game implements IPrintable{
 				System.out.println("Dracula is alive");
 			}
 			
+		
+		}
+		if((r.nextDouble() <= level.getVampireFrequency())){
+			posX = Math.abs(r.nextInt() % level.getDimX());
+			if((board.positionAvaible(posX, level.getDimY()-1)) && ((level.getNumberOfVampires()-Vampire.getTotalv()) > 0))  {
+				board.addnewObject(new ExplosiveVampire(posX, level.getDimY()-1, this));
+			}
 		}
 		
 		
@@ -134,11 +141,7 @@ public class Game implements IPrintable{
 	}
 	
 	//metodo utilizado para el comando addvampireCommand:
-	
-	public boolean addVampireCommand() {
-		
-		
-	}
+	//public boolean addVampireCommand() {}
 	
 	public boolean positionAvaible(int x, int y) {
 		return board.positionAvaible(x, y);
@@ -162,6 +165,9 @@ public class Game implements IPrintable{
 	
 	public int getDimY() {
 		return level.getDimY();
+	}
+	public int getDimX() {
+		return level.getDimX();
 	}
 
 	public String getInfo() {

@@ -4,6 +4,8 @@ package logic.GameObjects;
 import logic.Game;
 
 public abstract class GameObject implements IAttack{
+	
+	
 	protected int x;
 	protected int y;
 	protected int health;
@@ -25,9 +27,9 @@ public abstract class GameObject implements IAttack{
 		return (this.x == x && this.y == y);
 	}
 	
-	abstract void advance();
-		
-	abstract void setCnt();
+	protected abstract void advance();
+	protected abstract void setAlive();
+	protected abstract void setCnt();
 		
 	public String toString() {
 		return " " + this.info + " [" + this.health + "] ";

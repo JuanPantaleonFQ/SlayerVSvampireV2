@@ -27,7 +27,7 @@ public class AddVampireCommmand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		game.
+		
 		
 		return true;
 	}
