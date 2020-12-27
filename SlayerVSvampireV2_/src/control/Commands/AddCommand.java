@@ -20,7 +20,7 @@ public class AddCommand extends Command {
 
 	public boolean execute(Game game) {
 		boolean ok = false;
-		ok = game.addSlayer(x,y);
+		ok = game.addDefensiveObject(x, y);
 		if(ok) {
 		 game.computerActions();
 		}

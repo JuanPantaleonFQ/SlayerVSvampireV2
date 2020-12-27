@@ -20,7 +20,7 @@ public class AddBloodBankCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 

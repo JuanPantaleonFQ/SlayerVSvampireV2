@@ -20,10 +20,18 @@ public class Slayer extends GameObject{
 	//tener bucle encima de other.reciveSlayeratack recibimos los interfaces que pedimos, y en cuanto un interFAZ devuelva true se para.
 	public void attack() {
 		if(isAlive()) {
-			IAttack other = game.getAttackableInPosition(x, y-1);
-			if(other != null) {
-				other.receiveSlayerAttack(HARM);
-			}
+			int i = this.y;
+			boolean atacado = false;
+			do {
+				i++;
+				IAttack other = game.getAttackableInPosition(x,i);
+				if(other != null) {
+					other.receiveSlayerAttack(HARM);
+					atacado = true;
+				}
+				
+			} while (i < game.getDimY() && !atacado);
+			
 		}
 	}
 	

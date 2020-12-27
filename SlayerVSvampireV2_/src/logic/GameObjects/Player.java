@@ -8,13 +8,13 @@ public class Player {
 		this.coins = 50;
 	}
 	
-	//Método que devuelve true si el numero de monedas del jugador es mayor o igual que 50, false en caso contrario
-	public boolean areCoins() { 							
-		boolean ok = true;
-		if (this.coins < 50) {
-			ok = false;
+	//Método que devuelve true si el numero de monedas del jugador es mayor o igual que un numero de monedas que se pasa por parametro, false en caso contrario
+	public boolean areCoins(int x) { 							
+		boolean are = true;
+		if (this.coins < x) {
+			are = false;
 		}
-		return ok;
+		return are;
 	}
 
 	//Getter de Monedas

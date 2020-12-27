@@ -16,6 +16,7 @@ public class Game implements IPrintable{
 	private GamePrinter printer;   
 	private int winnerMessage;
 	private Long seed;
+	 
 	
 	
 	
@@ -79,8 +80,7 @@ public class Game implements IPrintable{
 	public void computerActions() {
 		this.update();
 		board.attack();
-		this.addVampire();
-		this.addDracula();
+		this.addAttackObject();
 		board.removeDeadObjects();
 	}
 	
@@ -100,41 +100,44 @@ public class Game implements IPrintable{
 		board.attack();
 	}
 	
-	public void addDracula() {
-		if (Dracula.getDraculasOnBoard() > 0) {
-			System.out.println("[ERROR]: Dracula is already alive.");
+	public void addAttackObject() {
+		int posX;
+		if (r.nextDouble() <= level.getVampireFrequency()) {
+			posX = Math.abs(r.nextInt() % level.getDimX()); 
+			if((board.positionAvaible(posX, level.getDimY()-1)) && ((level.getNumberOfVampires()-Vampire.getTotalv()) > 0))  {
+				board.addnewObject(new Vampire(posX, level.getDimY()-1 ,this));
+			}
 		}
-		else {
-			int posX = Math.abs(r.nextInt() % level.getDimX());
-			if ((r.nextDouble() <= level.getVampireFrequency()) && (board.positionAvaible(posX, level.getDimY()-1)) && ((level.getNumberOfVampires()-Vampire.getTotalv()) > 0)) {
+		
+		if (!Dracula.Alive() && (r.nextDouble() <= level.getVampireFrequency())) {
+			posX = Math.abs(r.nextInt() % level.getDimX());
+			if ((board.positionAvaible(posX, level.getDimY()-1)) && ((level.getNumberOfVampires()-Vampire.getTotalv()) > 0)) {
 				board.addnewObject(new Dracula(posX,level.getDimY()-1,this));
 				System.out.println("Dracula is alive");
 			}
+			
 		}
+		
 		
 		
 	}
 	
-	public void addVampire() {
-		int posX = Math.abs(r.nextInt() % level.getDimX()); 
-		if((r.nextDouble() <= level.getVampireFrequency()) && (board.positionAvaible(posX, level.getDimY()-1)) && ((level.getNumberOfVampires()-Vampire.getTotalv()) > 0))  {
-			board.addnewObject(new Vampire(posX, level.getDimY()-1 ,this));
+	public boolean addDefensiveObject(int x, int y) {
+		boolean added = false;
+		if (player.areCoins(50) && board.positionAvaible(x, y) && (x <= level.getDimX()-1) && (y <= level.getDimY()-1 )) {
+			board.addnewObject(new Slayer(x,y,this));
+			added = true;
+			player.setCoins(-50);
+			
 		}
+		return added;
 	}
 	
 	public boolean positionAvaible(int x, int y) {
 		return board.positionAvaible(x, y);
 	}
 	
-	public boolean addSlayer(int x, int y) {
-		boolean ok = false;
-		if(player.areCoins() && board.positionAvaible(x, y) && x <= level.getDimX()-1 && y < level.getDimY()-1) {
-			board.addnewObject(new Slayer(x,y,this));
-			ok = true;
-			player.setCoins(-50);
-		}
-		return ok;
-	}
+	
 	
 	public IAttack getAttackableInPosition (int x, int y) {
 		IAttack other;
@@ -145,6 +148,13 @@ public class Game implements IPrintable{
 	
 	public String getPositionToString(int x, int y) {
 		return board.getPositionToString(x,y);
+		
+		
+		
+	}
+	
+	public int getDimY() {
+		return level.getDimY();
 	}
 
 	public String getInfo() {
@@ -157,4 +167,6 @@ public class Game implements IPrintable{
 	public String toString() {
 		return printer.toString();
 	}
+
+	
 }

@@ -6,29 +6,25 @@ import logic.Game;
 public class Dracula extends Vampire {
 	
 	//Atributtes:
-	private static int DraculaOnBoard = 0;
+	private static boolean DraculaOnBoard;
 	private int progress;
 	
 	//Constructor:
 	public Dracula(int xx, int yy, Game g) {
 		super(xx, yy, g);
-		Dracula.DraculaOnBoard = 1;
+		Dracula.DraculaOnBoard = true;
 		this.health = 5;
 		this.info = "D";
 		this.progress = 0;
 	}
-	
-	//getters y setters para los draculas en el tablero en un instante
-	public static int getDraculasOnBoard(){return DraculaOnBoard;}
-	public static void setDraculasOnBoard(int draculaOnBoard){DraculaOnBoard = draculaOnBoard;}
-	
-	
+		
 	//metodos
 	
 	
 	
+	
 	//metodo de ataque para dracula
-	public void Attack() {
+	public void attack() {
 		if (isAlive()) {
 			IAttack other = game.getAttackableInPosition(x, y-1);
 			if (other != null) {
@@ -39,13 +35,11 @@ public class Dracula extends Vampire {
 		
 	}
 	//funcion que lo que hace es comprobar si ya hay un objeto dracula en el tablero
-	public static boolean DraculaOnBoard(int max) {
-		boolean fin = false;
-		if(Dracula.DraculaOnBoard == 1) {
-			fin = true;
-		}
-		return fin;
+	public static boolean Alive(){
+		return DraculaOnBoard;
+		
 	}
+	
 	
 	public void advance(){
 		this.progress++;
@@ -63,8 +57,7 @@ public class Dracula extends Vampire {
 		
 		
 		
-	}
-	
+	}	
 	
 	public boolean receiveFlashAttack() {
 		return false;
