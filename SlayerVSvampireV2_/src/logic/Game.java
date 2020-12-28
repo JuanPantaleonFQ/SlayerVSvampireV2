@@ -96,9 +96,7 @@ public class Game implements IPrintable{
 		}
 	}
 	
-	public void attack() {
-		board.attack();
-	}
+	
 	
 	public void addAttackObject() {
 		int posX;
@@ -135,6 +133,17 @@ public class Game implements IPrintable{
 			board.addnewObject(new Slayer(x,y,this));
 			added = true;
 			player.setCoins(-50);
+			
+		}
+		return added;
+	}
+	
+	public boolean addDefensiveObject(int x, int y, int z) {
+		boolean added = false;
+		if (player.areCoins(z) && board.positionAvaible(x, y) && (y < level.getDimY()) && (x < level.getDimX())) {
+			player.setCoins(-z);
+			board.addnewObject(new BloodBank(x,y,z, this));
+			added = true;
 			
 		}
 		return added;
@@ -192,13 +201,29 @@ public class Game implements IPrintable{
 	}
 	
 	public boolean garlicPush() {
-		boolean executedCommand  = false;
-		if (player.areCoins(10)) {
+		boolean ok = false;
+		if(player.areCoins(10)) {
 			player.setCoins(-10);
 			board.GarlicPush();
-			executedCommand = true;
+			ok= true;
 		}
-		return executedCommand;
+		return ok;
+	}
+
+	public boolean lightFlash() {
+		boolean ok = false;
+		if(player.areCoins(50)) {
+			player.setCoins(-50);
+			board.LightFlash();
+			ok= true;
+		}
+		return ok;
+	}
+
+	public void setCoinsFromBloodBank(int i) {
+		// TODO Auto-generated method stub
+		player.setCoinsFromBloodBank(i);
+		
 	}
 	
 }

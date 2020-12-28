@@ -41,6 +41,11 @@ public class GameObjectBoard {
 	public void GarlicPush() {
 		list.GarlicPush();
 	}
+
+	public void LightFlash() {
+		list.LightFLash();
+		
+	}
 	
 	
 	

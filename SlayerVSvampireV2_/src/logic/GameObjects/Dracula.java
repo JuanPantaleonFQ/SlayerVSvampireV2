@@ -7,21 +7,16 @@ public class Dracula extends Vampire {
 	
 	//Atributtes:
 	private static boolean DraculaOnBoard = false;
-	private int progress;
-	
+		
 	//Constructor:
 	public Dracula(int xx, int yy, Game g) {
 		super(xx, yy, g);
 		Dracula.DraculaOnBoard = true;
 		this.health = 5;
 		this.info = "D";
-		this.progress = 0;
+		
 	}
 		
-	//metodos
-	
-	
-	
 	
 	//metodo de ataque para dracula
 	public void attack() {
@@ -46,26 +41,7 @@ public class Dracula extends Vampire {
 	
 	
 	
-	
-	public void advance(){
-		this.progress++;
-		if(progress == 2) {
-			progress = 0;
-			if (game.positionAvaible(x, y-1)) {
-				this.y--;
-			}
-		}
-		if(y == 0) {
-			
-			game.setFin(true);
-			game.setWinnerMessage(1);
-		}
-		
-		
-		
-	}	
-	
-	public boolean receiveFlashAttack() {
+	public boolean receiveLightFlash() {
 		return false;
 	}
 	

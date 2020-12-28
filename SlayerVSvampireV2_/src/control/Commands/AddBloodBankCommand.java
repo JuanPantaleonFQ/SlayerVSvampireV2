@@ -8,11 +8,16 @@ public class AddBloodBankCommand extends Command {
 	private int y;
 	private int z;
 	
-	public AddBloodBankCommand(int x, int y, int z) {
+	public AddBloodBankCommand() {
 		this.name = String.format("bank");
 		this.shortcut = String.format("b");
 		this.help = String.format("[b]ank <x> <y> <z>");
-		this.details = String.format("add BankBlood in <x, y> and cost z");
+		this.details = String.format("add BankBlood in <x, y> and cost <z>");
+		
+	}
+
+	public AddBloodBankCommand(int x, int y, int z) {
+		this();
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -20,8 +25,17 @@ public class AddBloodBankCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
+		boolean executed = false;
+		executed = game.addDefensiveObject(x, y, z);
+		if (executed) {
+			game.update();
+		}
+		else {
+			System.out.println(notEnoughtCoins);
+		}
 		
-		return false;
+		
+		return executed;
 	}
 
 	@Override

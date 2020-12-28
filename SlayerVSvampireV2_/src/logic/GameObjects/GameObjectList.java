@@ -9,7 +9,7 @@ public class GameObjectList {
 		this.gameobjects = new ArrayList<GameObject>();
 	}
 	
-	public boolean positionAvaible(int x, int y) {
+	public boolean positionAvaible(int x, int y) {	//comprueba por cada objeto si sus coordenadas coinciden con esa posicion.
 		boolean avaible = true;
 		int i = 0;
 		while( i < gameobjects.size() && avaible) {
@@ -82,7 +82,7 @@ public class GameObjectList {
 	public void GarlicPush() {
 		for (int i = 0; i < gameobjects.size(); i++) {
 			if (gameobjects.get(i).isAlive()) {
-				if (gameobjects.get(i).receiveGarlicPush() && gameobjects.get(i).outOfBounds()) {
+				if (gameobjects.get(i).receiveGarlicPush() && gameobjects.get(i).outOfBoard()) {
 					gameobjects.get(i).setAlive();
 					gameobjects.get(i).setCnt();
 					gameobjects.remove(i);
@@ -93,6 +93,23 @@ public class GameObjectList {
 			}
 		}
 		
+		
+	}
+
+	public void LightFLash() {
+		for (int i = 0; i < gameobjects.size(); i++) {
+			if (gameobjects.get(i).isAlive()) {
+				if (gameobjects.get(i).receiveLightFlash()) {
+					gameobjects.get(i).setAlive();
+					gameobjects.get(i).setCnt();
+					gameobjects.remove(i);
+					i--;
+					
+				}
+				
+				
+			}
+		}
 		
 	}
 	

@@ -31,6 +31,12 @@ public class Player {
 	public void resetCoins() {
 		this.coins = 50;
 	}
+	//metodo que añade las monedas del blood bank segun la vida del bloodbank(z)
+	public void setCoinsFromBloodBank(int i) {
+		// TODO Auto-generated method stub
+		this.setCoins(i);
+		
+	}
 	
 	
 }

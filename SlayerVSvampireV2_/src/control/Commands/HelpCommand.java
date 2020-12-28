@@ -9,7 +9,7 @@ public class HelpCommand extends Command {
 		this.name = String.format("help");
 		this.shortcut = String.format("h");
 		this.help = String.format("[h]elp");
-		this.details = String.format("how this help");
+		this.details = String.format("show this help text");
 	}
 
 	public boolean execute(Game game) {

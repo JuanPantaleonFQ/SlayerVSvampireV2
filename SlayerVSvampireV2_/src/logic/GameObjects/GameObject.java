@@ -35,8 +35,7 @@ public abstract class GameObject implements IAttack{
 		return " " + this.info + " [" + this.health + "] ";
 	}
 
-	public boolean outOfBounds() {
-		
+	public boolean outOfBoard() {
 		return (this.y == game.getDimY());
 	}
 

@@ -79,4 +79,21 @@ public class Vampire extends GameObject {
 	@Override
 	protected void setAlive() {}
 	
+	public boolean receiveGarlicPush() {
+		this.progress =0;
+		if (game.positionAvaible(this.x, this.y+1)) {
+			this.y++;
+						
+		}
+		return true;
+				
+	}
+	
+	public boolean receiveLightFlash() {
+		this.health = 0;
+		return true;
+		
+		
+	}
+	
 }

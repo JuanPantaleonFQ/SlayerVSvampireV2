@@ -12,7 +12,7 @@ public class AddVampireCommmand extends Command {
 		this.name = String.format("vampire");
 		this.details = "add vampire (dracula or explosive) in the position x,y";
 		this.shortcut = "v";
-		this.help = "[v]ampire  [<type>] <x><y>";
+		this.help = "[v]ampire [<type>] <x> <y>.";
 		
 	}
 	//por conveniencia de constructores, se ejecutara primero el constructor de argumentos ya que este tiene una llamada al constructor sin argumentos
@@ -27,13 +27,21 @@ public class AddVampireCommmand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		
+		boolean executed = false;
+		executed = game.addVampireCommand();
+		if (executed) {
+			game.update();
+		}
+		else {
+			
+		}
 		
 		return true;
 	}
 
 	@Override
 	public Command parse(String[] commandWords) {
+		
 		
 		return null;
 	}

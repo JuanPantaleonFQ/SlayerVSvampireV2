@@ -5,10 +5,10 @@ import logic.Game;
 public class GarlicPushCommand extends Command {
 	
 	public GarlicPushCommand() {
-		this.name ="Garlic";
-		this.details = "Push vampires one step back.";
-		this.help ="[g]arlic";
-		this.shortcut = "g";
+		this.name = String.format("garlic");
+		this.shortcut = String.format("g");
+		this.help = String.format("[g]arlic");
+		this.details = String.format("Push vampires one step back");
 	}
 
 	@Override

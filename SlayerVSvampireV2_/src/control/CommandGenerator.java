@@ -1,9 +1,11 @@
 package control;
+import control.Commands.AddBloodBankCommand;
 import control.Commands.AddCommand;
 import control.Commands.Command;
 import control.Commands.ExitCommand;
 import control.Commands.GarlicPushCommand;
 import control.Commands.HelpCommand;
+import control.Commands.LightFlashCommand;
 import control.Commands.ResetCommand;
 import control.Commands.SuperCoinsCommand;
 import control.Commands.UpdateCommand;
@@ -17,13 +19,16 @@ public class CommandGenerator {
 			new UpdateCommand(),
 			new SuperCoinsCommand(),
 			new GarlicPushCommand(),
+			new LightFlashCommand(),
+			new AddBloodBankCommand(),
+			
 	};
 	
 
 	public static Command parse(String[] parameters) {
 		int i = 0;
 		Command c = null;
-		while(c == null && i < 7) {
+		while(c == null && i < 9) {
 			c = avaibleCommands[i].parse(parameters);
 			i++;
 		}
@@ -32,7 +37,7 @@ public class CommandGenerator {
 	
 	public static String commandHelp() {
 		String help = "";
-		for(int i = 0; i<7; i++) {
+		for(int i = 0; i<9; i++) {
 			help = help + avaibleCommands[i].helpText();
 		}
 		return help;
