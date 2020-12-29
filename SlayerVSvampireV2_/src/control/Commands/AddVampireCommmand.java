@@ -60,7 +60,7 @@ public class AddVampireCommmand extends Command {
 			}
 			else {
 				this.y = Integer.parseInt(commandWords[3]);
-				this.x =  Integer.parseInt(commandWords[2];
+				this.x =  Integer.parseInt(commandWords[2]);
 				if (commandWords[1].equalsIgnoreCase("d")) {
 					this.type = "d";
 					return new AddVampireCommmand(this.type,this.x,this.y);
