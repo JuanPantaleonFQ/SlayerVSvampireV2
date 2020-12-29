@@ -30,7 +30,7 @@ public class Main {
 						seed = System.currentTimeMillis();
 					
 					System.out.print(welcomeMsg);
-			    		System.out.println(seedInfoMsg + seed);
+			    	System.out.println(seedInfoMsg + seed);
 			    		
 					Controller controller = new Controller(new Game(seed, level), new Scanner(System.in));
 					controller.run();
