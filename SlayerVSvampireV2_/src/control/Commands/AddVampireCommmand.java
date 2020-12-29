@@ -56,6 +56,7 @@ public class AddVampireCommmand extends Command {
 				
 			}
 			else {
+				this.y
 				
 			}
 			
