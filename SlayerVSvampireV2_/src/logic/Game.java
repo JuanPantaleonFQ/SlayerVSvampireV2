@@ -157,13 +157,10 @@ public class Game implements IPrintable{
 				System.out.println("Dracula is already alive");
 				added = false;
 			}else{
-				board.addnewObject(new Dracula(xx, yy, this));
-			System.out.println("Dracula is Alive!");
+			board.addnewObject(new Dracula(xx, yy, this));
 			added = true;
 			}
-			board.addnewObject(new Dracula(xx, yy, this));
-			System.out.println("Dracula is Alive!");
-			added = true;
+			
 		}
 		else if(type.equals("e") &&(board.positionAvaible(xx, yy)) &&((level.getNumberOfVampires()-Vampire.getTotalv())> 0 ) && (xx < level.getDimX()) && (yy < level.getDimY())){
 			board.addnewObject(new ExplosiveVampire(xx, yy, this));
