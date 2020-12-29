@@ -7,13 +7,13 @@ public abstract class Command {
 	  protected String name;
 	  protected String shortcut;
 	  protected String details; 	//como se ejecuta '[a]dd X Y'
-	  protected String help;		// describir lo que hace el comando (este comando añade un slayer en la posicion X Y)
+	  protected String help;		// describir lo que hace el comando (este comando aï¿½ade un slayer en la posicion X Y)
 
 	  protected static final String incorrectNumberOfArgsMsg = "Incorrect number of arguments";
 	  protected static final String incorrectArgsMsg = "Incorrect arguments format";
-	  protected static final String incorrectPosition = "Incorrec position, element already exists or position is out of range";
+	  protected static final String incorrectPosition = "Incorrect position, element already exists or position is out of range";
 	  protected static final String notEnoughtCoins = "You don't have enough coins";
-	  
+	  protected static final String nonexistentVampireType = "Nonexistent vampire type or incorrect argument ";
 	  public Command(){}
 	  
 	  public abstract boolean execute(Game game);

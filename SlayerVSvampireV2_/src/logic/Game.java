@@ -148,7 +148,8 @@ public class Game implements IPrintable{
 		}
 		return added;
 	}
-	
+	//ESte metodo es utilizado por el comando para poder escoger que
+	//vampire añadir y de que tipo:
 	//metodo utilizado para el comando addvampireCommand:
 	public boolean addAttackObject(String type,int xx,int yy) {
 		boolean added = false;

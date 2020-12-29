@@ -40,6 +40,9 @@ public class AddVampireCommmand extends Command {
 		return true;
 	}
 
+	//como tenemos distintos tipos de vampire, hacemos que el basico es v, y el resto 
+	//deben invocarse con argumentos.
+	//(explosive,dracula,vampire)
 	@Override
 	public Command parse(String[] commandWords) {
 		if (this.matchCommandName(commandWords[0])) {
@@ -57,6 +60,23 @@ public class AddVampireCommmand extends Command {
 			}
 			else {
 				this.y = Integer.parseInt(commandWords[3]);
+				this.x =  Integer.parseInt(commandWords[2];
+				if (commandWords[1].equalsIgnoreCase("d")) {
+					this.type = "d";
+					return new AddVampireCommmand(this.type,this.x,this.y);
+
+
+				}
+				else if(commandWords[1].equalsIgnoreCase("e")){
+					this.type = "e";
+					return new AddVampireCommmand(this.type,this.x,this.y);
+					
+				}
+				else {
+					System.out.println(nonexistentVampireType);
+					return null;
+				}
+
 				
 			}
 			
