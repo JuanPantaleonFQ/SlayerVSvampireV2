@@ -21,8 +21,7 @@ public abstract class Command {
 	  public abstract Command parse(String[] commandWords);
 	  
 	  protected boolean matchCommandName(String name) {
-		    return this.shortcut.equalsIgnoreCase(name) || 
-		        this.name.equalsIgnoreCase(name);
+		    return this.shortcut.equalsIgnoreCase(name) || this.name.equalsIgnoreCase(name);
 	  }
 	  
 	  protected Command parseNoParamsCommand(String[] words) {

@@ -2,6 +2,8 @@ package control;
 
 import java.util.Scanner;
 
+import javax.sound.midi.SysexMessage;
+
 import control.Commands.Command;
 import control.CommandGenerator;
 import logic.Game;
@@ -34,7 +36,7 @@ public class Controller {
         	  refreshDisplay = false;
 			  System.out.println(prompt);	
 			  String s = scanner.nextLine();
-			  String[] parameters = s.toLowerCase().trim().split(" ");
+			    String[] parameters = s.toLowerCase().trim().split(" ");
 			  System.out.println("[DEBUG] Executing: " + s);
 		      Command command = CommandGenerator.parse(parameters);
 		      if (command != null) { 

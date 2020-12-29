@@ -150,12 +150,12 @@ public class Game implements IPrintable{
 	}
 	
 	//metodo utilizado para el comando addvampireCommand:
-	public boolean addVampireCommand() {
+	public boolean addAttackObject(String type,int xx,int yy) {
+		boolean added = false;
 		
 		
 		
-		
-		return fin;
+		return false;
 	}
 	
 	public boolean positionAvaible(int x, int y) {
