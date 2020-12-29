@@ -2,7 +2,6 @@ package logic;
 
 import java.util.Random;
 import logic.GameObjects.*;
-import logic.GameObjects.GameObjectBoard;
 import view.GamePrinter;
 import view.IPrintable;
 
@@ -153,10 +152,30 @@ public class Game implements IPrintable{
 	//metodo utilizado para el comando addvampireCommand:
 	public boolean addAttackObject(String type,int xx,int yy) {
 		boolean added = false;
-		
-		
-		
-		return false;
+		if (type.equals("d") && (board.positionAvaible(xx, yy)) && ((level.getNumberOfVampires()-Vampire.getTotalv())>0)&& (xx < level.getDimX())&& (yy < level.getDimY())) {
+			if (Dracula.Alive()) {
+				System.out.println("Dracula is already alive");
+				added = false;
+			}else{
+				board.addnewObject(new Dracula(xx, yy, this));
+			System.out.println("Dracula is Alive!");
+			added = true;
+			}
+			board.addnewObject(new Dracula(xx, yy, this));
+			System.out.println("Dracula is Alive!");
+			added = true;
+		}
+		else if(type.equals("e") &&(board.positionAvaible(xx, yy)) &&((level.getNumberOfVampires()-Vampire.getTotalv())> 0 ) && (xx < level.getDimX()) && (yy < level.getDimY())){
+			board.addnewObject(new ExplosiveVampire(xx, yy, this));
+			added = true;
+		}
+		else if(type.equals("") && board.positionAvaible(xx, yy)&& (board.positionAvaible(xx, yy)) && ((level.getNumberOfVampires()-Vampire.getTotalv())>0)){
+			board.addnewObject(new Vampire(xx, yy, this));
+			added = true;
+
+		}	
+				
+		return added; 
 	}
 	
 	public boolean positionAvaible(int x, int y) {
