@@ -36,7 +36,6 @@ public class Controller {
         	  refreshDisplay = false;
 			  System.out.println(prompt);	
 			  String s = scanner.nextLine();
-			  System.out.println("hola mundo jaja si lees esto dale like");
 			  String[] parameters = s.toLowerCase().trim().split(" ");
 			  System.out.println("[DEBUG] Executing: " + s);
 		      Command command = CommandGenerator.parse(parameters);
