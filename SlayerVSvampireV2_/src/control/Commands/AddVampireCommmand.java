@@ -56,7 +56,7 @@ public class AddVampireCommmand extends Command {
 				
 			}
 			else {
-				this.y
+				this.y = Integer.parseInt(commandWords[3]);
 				
 			}
 			
