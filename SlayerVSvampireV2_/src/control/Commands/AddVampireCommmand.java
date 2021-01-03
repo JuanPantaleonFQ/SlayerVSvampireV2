@@ -29,15 +29,13 @@ public class AddVampireCommmand extends Command {
 	public boolean execute(Game game) {
 		boolean executed = false;
 		executed = game.addAttackObject(this.type,this.x,this.y);
-		if (executed) {
-			game.update();
-			
-		}
-		else {
+		if (!executed) {
+			System.out.println(incorrectPosition);
 			
 		}
 		
-		return true;
+		
+		return executed;
 	}
 
 	//como tenemos distintos tipos de vampire, hacemos que el basico es v, y el resto 

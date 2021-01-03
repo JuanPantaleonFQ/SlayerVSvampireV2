@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import javax.sound.midi.SysexMessage;
 
+import Exceptions.GameExceptions;
 import control.Commands.Command;
 import control.CommandGenerator;
 import logic.Game;
@@ -38,13 +39,22 @@ public class Controller {
 			  String s = scanner.nextLine();
 			  String[] parameters = s.toLowerCase().trim().split(" ");
 			  System.out.println("[DEBUG] Executing: " + s);
+			  try {
+				Command command = CommandGenerator.parse(parameters);
+				refreshDisplay = command.execute(game);
+			  } catch (GameExceptions e) {
+				  
+				  System.out.format(e.getMessage() + "%n%n");
+
+			   }
+			   /*
 		      Command command = CommandGenerator.parse(parameters);
 		      if (command != null) { 
 		    	  		refreshDisplay = command.execute(game);
 		       } 
 		       else {
 		    	   		System.out.println("[ERROR]: "+ unknownCommandMsg);
-		       }
+		       }*/
 		}
 	    
         	if (refreshDisplay) {

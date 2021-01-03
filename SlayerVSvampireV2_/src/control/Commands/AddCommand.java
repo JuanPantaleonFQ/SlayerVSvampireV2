@@ -1,5 +1,6 @@
 package control.Commands;
 
+import Exceptions.CommandParseException;
 import logic.Game;
 
 public class AddCommand extends Command {
@@ -31,6 +32,8 @@ public class AddCommand extends Command {
 	}
 
 
+	//este es el antiguo metodo parse
+	/*
 	public Command parse(String[] commandWords) {
 		if (this.matchCommandName(commandWords[0])) {
 			if (commandWords.length != 3) {
@@ -44,6 +47,33 @@ public class AddCommand extends Command {
 			}
 		}
 		return null;
+	}
+	*/
+	public Command parse(String[] commandWords) throws CommandParseException{
+		Command command = null;
+		if (this.matchCommandName(commandWords[0])){
+			if (commandWords.length != 3) {
+				throw new CommandParseException("[ERROR]: " + incorrectArgsMsg);
+				
+			}
+			else{
+				try {
+					this.y = Integer.parseInt(commandWords[2]);
+					this.x = Integer.parseInt(commandWords[1]);
+				} catch (NumberFormatException e) {
+					//TODO: handle exception
+					throw new CommandParseException("[ERROR]: "+ incorrectArgsMsg);
+				}
+				command = new AddCommand(this.x, this.y);
+			}
+
+			
+		}
+
+
+
+		
+		return command;
 	}
 	
 

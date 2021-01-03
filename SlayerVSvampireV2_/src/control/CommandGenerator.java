@@ -1,4 +1,6 @@
 package control;
+
+import Exceptions.CommandParseException;
 import control.Commands.AddBloodBankCommand;
 import control.Commands.AddCommand;
 import control.Commands.Command;
@@ -11,21 +13,13 @@ import control.Commands.SuperCoinsCommand;
 import control.Commands.UpdateCommand;
 
 public class CommandGenerator {
-	private static Command[] avaibleCommands = {
-			new AddCommand(),
-			new HelpCommand(),
-			new ResetCommand(),
-			new ExitCommand(),
-			new UpdateCommand(),
-			new SuperCoinsCommand(),
-			new GarlicPushCommand(),
-			new LightFlashCommand(),
-			new AddBloodBankCommand(),
-			
-	};
-	
+	private static Command[] avaibleCommands = { new AddCommand(), new HelpCommand(), new ResetCommand(),
+			new ExitCommand(), new UpdateCommand(), new SuperCoinsCommand(), new GarlicPushCommand(),
+			new LightFlashCommand(), new AddBloodBankCommand(),
 
-	public static Command parse(String[] parameters) {
+	};
+
+	public static Command parse(String[] parameters) throws CommandParseException {
 		int i = 0;
 		Command c = null;
 		while(c == null && i < 9) {

@@ -1,6 +1,7 @@
 package control.Commands;
 
 import logic.Game;
+import Exceptions.*;
 
 public abstract class Command {
 
@@ -13,17 +14,19 @@ public abstract class Command {
 	  protected static final String incorrectArgsMsg = "Incorrect arguments format";
 	  protected static final String incorrectPosition = "Incorrect position, element already exists or position is out of range";
 	  protected static final String notEnoughtCoins = "You don't have enough coins";
-	  protected static final String nonexistentVampireType = "Nonexistent vampire type or incorrect argument ";
+	  protected static final String nonexistentVampireType = "[ERROR]: invalid vampire type";
 	  public Command(){}
 	  
-	  public abstract boolean execute(Game game);
+	  public abstract boolean execute(Game game) throws CommandExecuteException;
 	  
-	  public abstract Command parse(String[] commandWords);
+	  public abstract Command parse(String[] commandWords) throws CommandParseException;
 	  
 	  protected boolean matchCommandName(String name) {
 		    return this.shortcut.equalsIgnoreCase(name) || this.name.equalsIgnoreCase(name);
 	  }
-	  
+
+	  //antiguo metodo antes de añadir excepciones.
+	  /*
 	  protected Command parseNoParamsCommand(String[] words) {
 			if (matchCommandName(words[0])) {
 				if (words.length != 1) {
@@ -35,6 +38,20 @@ public abstract class Command {
 			
 			return null;
 	  }
+	  */
+
+	  protected Command parseNoParamsCommand(String[] words) throws CommandParseException {
+			if (matchCommandName(words[0])) {
+				if (words.length != 1){
+					throw new CommandParseException("[ERROR]: Command "+name+" :" + incorrectNumberOfArgsMsg);
+				}else{
+					return this;
+				} 
+			}
+			return null;
+		}
+
+
 	  
 	  public String helpText(){
 	    return help + ": " + details + "\n";
