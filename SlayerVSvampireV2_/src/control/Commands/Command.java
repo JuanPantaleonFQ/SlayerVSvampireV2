@@ -14,7 +14,7 @@ public abstract class Command {
 	  protected static final String incorrectArgsMsg = "Incorrect arguments format";
 	  protected static final String incorrectPosition = "Incorrect position, element already exists or position is out of range";
 	  protected static final String notEnoughtCoins = "You don't have enough coins";
-	  protected static final String nonexistentVampireType = "[ERROR]: invalid vampire type";
+	  
 	  public Command(){}
 	  
 	  public abstract boolean execute(Game game) throws CommandExecuteException;
@@ -55,5 +55,9 @@ public abstract class Command {
 	  
 	  public String helpText(){
 	    return help + ": " + details + "\n";
+	  }
+
+	  public String UnvalidArgsForParseMethod(){
+		  return("Unvalid argument for" + name +  "command, number expected: " + help);
 	  }
 }

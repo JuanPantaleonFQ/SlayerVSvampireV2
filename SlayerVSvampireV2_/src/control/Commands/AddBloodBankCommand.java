@@ -1,5 +1,6 @@
 package control.Commands;
 
+import Exceptions.CommandParseException;
 import logic.Game;
 
 public class AddBloodBankCommand extends Command {
@@ -7,6 +8,7 @@ public class AddBloodBankCommand extends Command {
 	private int x;
 	private int y;
 	private int z;
+	
 	
 	public AddBloodBankCommand() {
 		this.name = String.format("bank");
@@ -39,16 +41,22 @@ public class AddBloodBankCommand extends Command {
 	}
 
 	@Override
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		if (this.matchCommandName(commandWords[0])) {
 			if (commandWords.length != 4) {
-				System.err.println(Command.incorrectArgsMsg);
-				return null;
+				throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
 			}
 			else {
-				this.y = Integer.parseInt(commandWords[2]);
-	    		this.x = Integer.parseInt(commandWords[1]);
-	    		this.z = Integer.parseInt(commandWords[3]);
+				try {
+					this.y = Integer.parseInt(commandWords[2]);
+	    			this.x = Integer.parseInt(commandWords[1]);
+	    			this.z = Integer.parseInt(commandWords[3]);
+					
+				} catch (NumberFormatException e) {
+					//TODO: handle exception
+					throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod() )
+				}
+				
 	    		return new AddBloodBankCommand(this.x, this.y, this.z);
 			}
 		}

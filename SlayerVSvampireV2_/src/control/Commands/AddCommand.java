@@ -6,7 +6,7 @@ import logic.Game;
 public class AddCommand extends Command {
 	private int x;
 	private int y;
-	private static final String incorrectArgForclassAddslayer = "Unvalid argument for add slayer command, number expected: [a]dd <x> <y>";
+	
 	public AddCommand() {
 		this.name = String.format("add");
 		this.shortcut = String.format("a");
@@ -54,7 +54,7 @@ public class AddCommand extends Command {
 		Command command = null;
 		if (this.matchCommandName(commandWords[0])){
 			if (commandWords.length != 3) {
-				throw new CommandParseException("[ERROR]: " + incorrectArgForclassAddslayer);
+				throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
 				
 			}
 			else{
@@ -63,7 +63,7 @@ public class AddCommand extends Command {
 					this.x = Integer.parseInt(commandWords[1]);
 				} catch (NumberFormatException e) {
 					//TODO: handle exception
-					throw new CommandParseException("[ERROR]: "+ incorrectArgForclassAddslayer);
+					throw new CommandParseException("[ERROR]: "+ UnvalidArgsForParseMethod());
 				}
 				command = new AddCommand(this.x, this.y);
 			}

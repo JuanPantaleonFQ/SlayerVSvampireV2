@@ -1,5 +1,8 @@
 package control.Commands;
 
+import javax.print.attribute.standard.NumberOfInterveningJobs;
+
+import Exceptions.CommandParseException;
 import logic.Game;
 
 public class AddVampireCommmand extends Command {
@@ -42,17 +45,21 @@ public class AddVampireCommmand extends Command {
 	//deben invocarse con argumentos.
 	//(explosive,dracula,vampire)
 	@Override
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		if (this.matchCommandName(commandWords[0])) {
 			if (commandWords.length != 4 && commandWords.length !=3) {
-				System.out.println(incorrectArgsMsg);
-				return null;
+				throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
 				
 			}
 			else if (commandWords.length == 3) {
-				this.x = Integer.parseInt(commandWords[1]);		//la clase integer nos permite cambiar de tipo el string que hay en la posicion 2 del array commandWords.
-				this.y = Integer.parseInt(commandWords[2]);
-				this.type = "";
+				try {
+					this.x = Integer.parseInt(commandWords[1]);		//la clase integer nos permite cambiar de tipo el string que hay en la posicion 2 del array commandWords.
+				    this.y = Integer.parseInt(commandWords[2]);
+				    this.type = "";
+				} catch (NumberFormatException e) {
+					//TODO: handle exception
+					throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod())
+				}
 				return new AddVampireCommmand(this.type,this.x,this.y);
 				
 			}
@@ -73,6 +80,24 @@ public class AddVampireCommmand extends Command {
 				else {
 					System.out.println(nonexistentVampireType);
 					return null;
+				}
+				//--------------------------------------------------------------------
+				try {
+					this.y = Integer.parseInt(commandWords[3]);
+					this.x =  Integer.parseInt(commandWords[2]);
+					if (commandWords[1].equalsIgnoreCase("d")) {
+						this.type = "d";
+						return new AddVampireCommmand(this.type,this.x, this.y);
+					} else if(commandWords[1].equalsIgnoreCase("e")) {
+						this.type = "e";
+						return new AddVampireCommmand(this.type,this.x,this.y);
+					}else{
+						throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
+					}
+					
+				} catch (NumberFormatException e) {
+					//TODO: handle exception
+					throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
 				}
 
 				
