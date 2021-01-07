@@ -1,9 +1,10 @@
 package control.Commands;
 
+import Exceptions.CommandParseException;
 import logic.Game;
 
 public class GarlicPushCommand extends Command {
-	
+
 	public GarlicPushCommand() {
 		this.name = String.format("garlic");
 		this.shortcut = String.format("g");
@@ -17,17 +18,16 @@ public class GarlicPushCommand extends Command {
 		executed = game.garlicPush();
 		if (executed) {
 			game.computerActions();
-		}
-		else {
-			
+		} else {
+
 			System.out.println(notEnoughtCoins);
-			
+
 		}
 		return false;
 	}
 
 	@Override
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);
 		
 	}

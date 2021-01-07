@@ -1,5 +1,6 @@
 package control.Commands;
 
+import Exceptions.CommandParseException;
 import logic.Game;
 
 public class LightFlashCommand extends Command {
@@ -13,17 +14,15 @@ public class LightFlashCommand extends Command {
 	public boolean execute(Game game) {
 		boolean ok = false;
 		ok = game.lightFlash();
-		if(ok) {
-		 game.computerActions();
-		}
-		else {
+		if (ok) {
+			game.computerActions();
+		} else {
 			System.err.println(notEnoughtCoins);
 		}
 		return ok;
 	}
 
-
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);
 	}
 

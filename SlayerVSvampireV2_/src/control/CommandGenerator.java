@@ -36,6 +36,7 @@ public class CommandGenerator {
 			i++;
 		}
 		return c;
+		
 	}
 	
 	public static String commandHelp() {

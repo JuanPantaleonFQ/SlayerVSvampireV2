@@ -1,8 +1,9 @@
 package control.Commands;
 
+import Exceptions.CommandParseException;
 import logic.Game;
 
-public class UpdateCommand extends Command{
+public class UpdateCommand extends Command {
 	public UpdateCommand() {
 		this.name = String.format("none");
 		this.shortcut = String.format("n");
@@ -11,18 +12,16 @@ public class UpdateCommand extends Command{
 	}
 
 	public boolean execute(Game game) {
-		 game.computerActions();
+		game.computerActions();
 		return true;
 	}
-	
-	//Metodo matchCommandName sobreescrito para tener en cuenta el intro
+
+	// Metodo matchCommandName sobreescrito para tener en cuenta el intro
 	protected boolean matchCommandName(String name) {
-	    return this.shortcut.equalsIgnoreCase(name) || 
-	        this.name.equalsIgnoreCase(name) || name.equalsIgnoreCase("");
+		return this.shortcut.equalsIgnoreCase(name) || this.name.equalsIgnoreCase(name) || name.equalsIgnoreCase("");
 	}
 
-	
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);
 	}
 

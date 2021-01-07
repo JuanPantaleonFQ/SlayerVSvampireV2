@@ -1,5 +1,6 @@
 package control.Commands;
 
+import Exceptions.CommandParseException;
 import logic.Game;
 
 public class ResetCommand extends Command {
@@ -15,8 +16,7 @@ public class ResetCommand extends Command {
 		return true;
 	}
 
-	
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);
 	}
 

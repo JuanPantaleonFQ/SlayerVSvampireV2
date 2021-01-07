@@ -44,7 +44,7 @@ public class AddBloodBankCommand extends Command {
 	public Command parse(String[] commandWords) throws CommandParseException {
 		if (this.matchCommandName(commandWords[0])) {
 			if (commandWords.length != 4) {
-				throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
+				throw new CommandParseException("[ERROR]: " +  incorrectArgsMsg);
 			}
 			else {
 				try {
@@ -54,7 +54,7 @@ public class AddBloodBankCommand extends Command {
 					
 				} catch (NumberFormatException e) {
 					//TODO: handle exception
-					throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod() )
+					throw new CommandParseException("[ERROR]: " + incorrectArgsMsg);
 				}
 				
 	    		return new AddBloodBankCommand(this.x, this.y, this.z);

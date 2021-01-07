@@ -54,7 +54,7 @@ public class AddCommand extends Command {
 		Command command = null;
 		if (this.matchCommandName(commandWords[0])){
 			if (commandWords.length != 3) {
-				throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
+				throw new CommandParseException("[ERROR]: " + incorrectArgsMsg);
 				
 			}
 			else{
@@ -63,7 +63,7 @@ public class AddCommand extends Command {
 					this.x = Integer.parseInt(commandWords[1]);
 				} catch (NumberFormatException e) {
 					//TODO: handle exception
-					throw new CommandParseException("[ERROR]: "+ UnvalidArgsForParseMethod());
+					throw new CommandParseException("[ERROR]: "+ incorrectArgsMsg);
 				}
 				command = new AddCommand(this.x, this.y);
 			}

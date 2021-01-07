@@ -48,7 +48,7 @@ public class AddVampireCommmand extends Command {
 	public Command parse(String[] commandWords) throws CommandParseException {
 		if (this.matchCommandName(commandWords[0])) {
 			if (commandWords.length != 4 && commandWords.length !=3) {
-				throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
+				throw new CommandParseException("[ERROR]: " + incorrectArgsMsg);
 				
 			}
 			else if (commandWords.length == 3) {
@@ -58,13 +58,13 @@ public class AddVampireCommmand extends Command {
 				    this.type = "";
 				} catch (NumberFormatException e) {
 					//TODO: handle exception
-					throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod())
+					throw new CommandParseException("[ERROR]: " +incorrectArgsMsg);
 				}
 				return new AddVampireCommmand(this.type,this.x,this.y);
 				
 			}
 			else {
-				this.y = Integer.parseInt(commandWords[3]);
+				/*this.y = Integer.parseInt(commandWords[3]);
 				this.x =  Integer.parseInt(commandWords[2]);
 				if (commandWords[1].equalsIgnoreCase("d")) {
 					this.type = "d";
@@ -81,6 +81,7 @@ public class AddVampireCommmand extends Command {
 					System.out.println(nonexistentVampireType);
 					return null;
 				}
+				*/
 				//--------------------------------------------------------------------
 				try {
 					this.y = Integer.parseInt(commandWords[3]);
@@ -92,12 +93,12 @@ public class AddVampireCommmand extends Command {
 						this.type = "e";
 						return new AddVampireCommmand(this.type,this.x,this.y);
 					}else{
-						throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
+						throw new CommandParseException("[ERROR]: " + incorrectArgsMsg);
 					}
 					
 				} catch (NumberFormatException e) {
 					//TODO: handle exception
-					throw new CommandParseException("[ERROR]: " + UnvalidArgsForParseMethod());
+					throw new CommandParseException("[ERROR]: " + incorrectArgsMsg);
 				}
 
 				

@@ -14,6 +14,7 @@ public abstract class Command {
 	  protected static final String incorrectArgsMsg = "Incorrect arguments format";
 	  protected static final String incorrectPosition = "Incorrect position, element already exists or position is out of range";
 	  protected static final String notEnoughtCoins = "You don't have enough coins";
+	  protected static final String UnvalidArgsForParseMethod = "Unvalid argument for command, expected:  help";
 	  
 	  public Command(){}
 	  
@@ -43,7 +44,7 @@ public abstract class Command {
 	  protected Command parseNoParamsCommand(String[] words) throws CommandParseException {
 			if (matchCommandName(words[0])) {
 				if (words.length != 1){
-					throw new CommandParseException("[ERROR]: Command "+name+" :" + incorrectNumberOfArgsMsg);
+					throw new CommandParseException("[ERROR]: Command "+name+": " + incorrectNumberOfArgsMsg);
 				}else{
 					return this;
 				} 
@@ -57,7 +58,5 @@ public abstract class Command {
 	    return help + ": " + details + "\n";
 	  }
 
-	  public String UnvalidArgsForParseMethod(){
-		  return("Unvalid argument for" + name +  "command, number expected: " + help);
-	  }
+	  
 }

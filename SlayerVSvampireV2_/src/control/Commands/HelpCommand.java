@@ -1,5 +1,6 @@
 package control.Commands;
 
+import Exceptions.CommandParseException;
 import control.CommandGenerator;
 import logic.Game;
 
@@ -17,8 +18,7 @@ public class HelpCommand extends Command {
 		return false;
 	}
 
-	
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);
 	}
 

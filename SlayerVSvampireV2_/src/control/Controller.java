@@ -42,11 +42,7 @@ public class Controller {
 			  try {
 				Command command = CommandGenerator.parse(parameters);
 				refreshDisplay = command.execute(game);
-			  } catch (GameExceptions e) {
-				  
-				  System.out.format(e.getMessage() + "%n%n");
-
-			   }
+			  }catch(GameExceptions e) {System.out.format(e.getMessage() + "%n%n");}
 			   /*
 		      Command command = CommandGenerator.parse(parameters);
 		      if (command != null) { 
