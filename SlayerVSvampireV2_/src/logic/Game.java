@@ -242,5 +242,10 @@ public class Game implements IPrintable{
 		player.setCoinsFromBloodBank(i);
 		
 	}
+
+	public String serialize() {
+		String serial = "Cycles:" + this.cycles + "\n" + "Coins: " + player.getCoins() + "\n" + "Level: " + level.getName()  ;
+		return serial; 
+	}
 	
 }
