@@ -31,7 +31,7 @@ public class GameObjectList {
 		gameobjects.add(o);
 	}
 	/*
-	 * gameobject list, tiene atacar, añadir, y el getAtacableinposition (max lineas de metodo 6) removeDead tambien va aqui
+	 * gameobject list, tiene atacar, aï¿½adir, y el getAtacableinposition (max lineas de metodo 6) removeDead tambien va aqui
 	 *  
 	 */
 	public IAttack getAttackableInPosition(int x, int y) {
@@ -111,6 +111,15 @@ public class GameObjectList {
 			}
 		}
 		
+	}
+
+	public String serializeBoard() {
+		String data ="";
+		for (int i = 0; i < gameobjects.size(); i++) {
+			data = data+ "\n"  + gameobjects.get(i).getObjectSerialized();
+			
+		}
+		return data;
 	}
 	
 	

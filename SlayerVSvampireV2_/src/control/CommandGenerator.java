@@ -10,8 +10,10 @@ import control.Commands.GarlicPushCommand;
 import control.Commands.HelpCommand;
 import control.Commands.LightFlashCommand;
 import control.Commands.ResetCommand;
+import control.Commands.SaveCommand;
 import control.Commands.SuperCoinsCommand;
 import control.Commands.UpdateCommand;
+import control.Commands.SerializeCommand;
 
 public class CommandGenerator {
 	private static Command[] avaibleCommands = { 
@@ -25,13 +27,15 @@ public class CommandGenerator {
 	 	 new LightFlashCommand(), 
 		 new AddBloodBankCommand(),
 		 new AddVampireCommmand(),
+		 new SerializeCommand(),
+		 new SaveCommand(),
 
 	};
 
 	public static Command parse(String[] parameters) throws CommandParseException {
 		int i = 0;
 		Command c = null;
-		while(c == null && i < 10) {
+		while(c == null && i < 12) {
 			c = avaibleCommands[i].parse(parameters);
 			i++;
 		}
@@ -41,7 +45,7 @@ public class CommandGenerator {
 	
 	public static String commandHelp() {
 		String help = "";
-		for(int i = 0; i<10; i++) {
+		for(int i = 0; i<12; i++) {
 			help = help + avaibleCommands[i].helpText();
 		}
 		return help;

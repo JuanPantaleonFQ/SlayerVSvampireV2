@@ -26,6 +26,12 @@ public class BloodBank extends GameObject {
 
 	@Override
 	protected void setCnt() {}
+
+	@Override
+	protected String getObjectSerialized() {
+		
+		return (this.info+";"+this.x+";"+this.y+";"+this.health+";"+"1"+";"+this.health);
+	}
 	
 	
 

@@ -46,6 +46,10 @@ public class GameObjectBoard {
 		list.LightFLash();
 		
 	}
+
+	public String serializeBoard(){
+		return list.serializeBoard();
+	}
 	
 	
 	

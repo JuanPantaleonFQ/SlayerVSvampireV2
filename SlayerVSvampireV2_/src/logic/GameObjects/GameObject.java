@@ -12,6 +12,7 @@ public abstract class GameObject implements IAttack{
 	protected Game game;
 	protected String info; //atributo utilizado para pintar el objeto en el tablero, no se utiliza en ningun otro metodo
 	
+	
 	public GameObject(int xx, int yy, Game g) {
 		this.x = xx;
 		this.y = yy;
@@ -30,6 +31,7 @@ public abstract class GameObject implements IAttack{
 	protected abstract void advance();
 	protected abstract void setAlive();
 	protected abstract void setCnt();
+	protected abstract String getObjectSerialized();
 		
 	public String toString() {
 		return " " + this.info + " [" + this.health + "] ";
@@ -38,6 +40,9 @@ public abstract class GameObject implements IAttack{
 	public boolean outOfBoard() {
 		return (this.y == game.getDimY());
 	}
+
+	
+
 
 	
 }

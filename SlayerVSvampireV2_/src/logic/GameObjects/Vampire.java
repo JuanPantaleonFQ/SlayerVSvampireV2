@@ -6,7 +6,7 @@ import logic.Game;
 public class Vampire extends GameObject {
 	private static int vampiresOnB= 0;
 	private static int totalv = 0;
-	private int progress;
+	protected int progress;
 	public Vampire(int xx, int yy, Game g) {
 		super(xx, yy, g);
 		this.health = 5;
@@ -94,6 +94,18 @@ public class Vampire extends GameObject {
 		return true;
 		
 		
+	}
+
+	@Override
+	protected String getObjectSerialized() {
+		int advancebinary;
+		if (this.progress ==0) {
+			advancebinary = 1;			
+		}else{
+			advancebinary = 0;
+		}
+		
+		return (this.info + ";"+this.x+";"+this.y+";"+this.health+";"+ advancebinary);
 	}
 	
 }

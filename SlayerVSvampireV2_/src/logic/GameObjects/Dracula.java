@@ -45,6 +45,16 @@ public class Dracula extends Vampire {
 		return false;
 	}
 	
+	protected String getObjectSerialized() {
+		int advancebinary;					// 1-> significa que en el proximo ciclo avanza. 0 -> significa que no avanza en el proximo ciclo.
+		if (this.progress ==0) {
+			advancebinary = 1;			
+		}else{
+			advancebinary = 0;
+		}
+		
+		return (this.info + ";"+this.x+";"+this.y+";"+this.health+";"+ advancebinary);
+	}
 	
 	
 	

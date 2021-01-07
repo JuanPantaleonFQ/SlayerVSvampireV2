@@ -238,14 +238,19 @@ public class Game implements IPrintable{
 	}
 
 	public void setCoinsFromBloodBank(int i) {
-		// TODO Auto-generated method stub
+		
 		player.setCoinsFromBloodBank(i);
 		
 	}
 
 	public String serialize() {
-		String serial = "Cycles:" + this.cycles + "\n" + "Coins: " + player.getCoins() + "\n" + "Level: " + level.getName()  ;
-		return serial; 
+		return "Number of cycles: " + cycles + "\n" +
+				"Coins: " + player.getCoins() + "\n" +
+				"Remaining vampires: " + (level.getNumberOfVampires() - Vampire.getTotalv()) + "\n" +
+				"Vampires on the board: " + Vampire.getVampiresOnB() + "\n\n" + "Game Object List: " + board.serializeBoard();
 	}
+
+	
+	
 	
 }

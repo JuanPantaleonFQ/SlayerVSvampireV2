@@ -15,6 +15,7 @@ public abstract class Command {
 	  protected static final String incorrectPosition = "Incorrect position, element already exists or position is out of range";
 	  protected static final String notEnoughtCoins = "You don't have enough coins";
 	  protected static final String UnvalidArgsForParseMethod = "Unvalid argument for command, expected:  help";
+	  protected static final String fileError = "File not created or imposible to replace or write it.";
 	  
 	  public Command(){}
 	  

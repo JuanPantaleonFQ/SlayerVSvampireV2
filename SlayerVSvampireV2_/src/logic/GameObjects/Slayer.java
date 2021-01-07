@@ -42,6 +42,13 @@ public class Slayer extends GameObject{
 
 	@Override
 	protected void setAlive() {}
+
+	@Override
+	protected String getObjectSerialized() {
+		// TODO Auto-generated method stub
+
+		return (this.info+";"+this.x+";"+this.y+";"+this.health);
+	}
 	
 	 
 	
