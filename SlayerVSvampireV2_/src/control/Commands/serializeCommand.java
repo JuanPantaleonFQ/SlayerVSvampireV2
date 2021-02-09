@@ -15,8 +15,8 @@ public class SerializeCommand extends Command {
     }
 
     @Override
-    public boolean execute(Game game) throws CommandExecuteException {
-        System.out.println(game.serialize());                          
+    public boolean execute(Game game){
+        System.out.println(game.serialize() + "\n\n");                          
         return false;
     }
 

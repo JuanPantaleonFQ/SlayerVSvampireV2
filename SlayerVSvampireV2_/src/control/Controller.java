@@ -1,5 +1,6 @@
 package control;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.sound.midi.SysexMessage;
@@ -26,7 +27,7 @@ public class Controller {
    	 System.out.println(game);
    }
     
-    public void run() {
+    public void run() throws IOException,GameExceptions {
 	    	boolean refreshDisplay = true;
 
 	    while (!game.isFinished()){
