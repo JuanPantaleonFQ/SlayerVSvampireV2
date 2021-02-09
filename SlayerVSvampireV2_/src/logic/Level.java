@@ -15,10 +15,6 @@ public enum Level {
 		this.dim_x = dim_x;
 		this.dim_y = dim_y;
 	}
-	public String getName() {
-		return name;
-	}
-	
 	public int getNumberOfVampires() {
 		return numberOfVampires;
 	}
@@ -33,6 +29,10 @@ public enum Level {
 
 	public int getDimY() {
 		return dim_y;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public static Level parse(String inputString) {

@@ -8,13 +8,13 @@ public class Player {
 		this.coins = 50;
 	}
 	
-	//Método que devuelve true si el numero de monedas del jugador es mayor o igual que un numero de monedas que se pasa por parametro, false en caso contrario
-	public boolean areCoins(int x) { 							
-		boolean are = true;
-		if (this.coins < x) {
-			are = false;
+	//Método que devuelve true si el numero de monedas del jugador es mayor o igual que 50, false en caso contrario
+	public boolean areCoins(int num) { 							
+		boolean ok = true;
+		if (this.coins < num) {
+			ok = false;
 		}
-		return are;
+		return ok;
 	}
 
 	//Getter de Monedas
@@ -30,12 +30,6 @@ public class Player {
 	//Método que reseta el valor de coins a 50
 	public void resetCoins() {
 		this.coins = 50;
-	}
-	//metodo que añade las monedas del blood bank segun la vida del bloodbank(z)
-	public void setCoinsFromBloodBank(int i) {
-		// TODO Auto-generated method stub
-		this.setCoins(i);
-		
 	}
 	
 	

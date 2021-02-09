@@ -1,6 +1,8 @@
+import java.io.IOException;
 import java.util.Scanner;
 import logic.Level;
 import control.Controller;
+import exceptions.GameException;
 import logic.Game;
 
 public class Main {
@@ -11,8 +13,7 @@ public class Main {
     public static final String seedIsNumberMsg = "the seed must be a number";
     public static final String seedInfoMsg = "Random generator initialized with seed: ";
 
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, GameException {
 		if (args.length < 1 || args.length > 2)
 			System.out.print(usageMsg);
 		else {
@@ -30,7 +31,7 @@ public class Main {
 						seed = System.currentTimeMillis();
 					
 					System.out.print(welcomeMsg);
-			    	System.out.println(seedInfoMsg + seed);
+			    		System.out.println(seedInfoMsg + seed);
 			    		
 					Controller controller = new Controller(new Game(seed, level), new Scanner(System.in));
 					controller.run();

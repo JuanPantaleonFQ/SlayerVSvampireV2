@@ -2,37 +2,34 @@ package logic.GameObjects;
 
 import logic.Game;
 
-public class BloodBank extends GameObject {
+public class BloodBank extends GameObject{
 
-	
-	public BloodBank(int xx, int yy,int zz, Game g) {
+	public BloodBank(int xx, int yy, int zz, Game g) {
 		super(xx, yy, g);
-		this.info = "B";
 		this.health = zz;
-		
+		this.info = "B";
 	}
 
-	@Override
+
 	public void attack() {
-		game.setCoinsFromBloodBank((health+10)/100);
-		
-	}
-
-	@Override
-	protected void advance() {}
-
-	@Override
-	protected void setAlive() {}
-
-	@Override
-	protected void setCnt() {}
-
-	@Override
-	protected String getObjectSerialized() {
-		
-		return (this.info+";"+this.x+";"+this.y+";"+this.health+";"+"1"+";"+this.health);
+		game.setCoins((health*10)/100);
 	}
 	
+	public void advance() {};
+	public void setCnt() {};
+	public void setAlive() {};
 	
+	public boolean receiveVampireAttack(int max) {
+		this.health = 0;
+		return true;
+	}
+	
+	public String serialize() {
+		return this.info+";" + this.x + ";" + this.y+ ";1;"+this.health+";";
+	}
 
+
+
+	
+	
 }

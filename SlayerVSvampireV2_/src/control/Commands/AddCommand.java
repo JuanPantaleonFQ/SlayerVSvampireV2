@@ -1,11 +1,12 @@
 package control.Commands;
 
-import Exceptions.CommandParseException;
+import exceptions.CommandExecuteException;
+import exceptions.CommandParseException;
 import logic.Game;
 
 public class AddCommand extends Command {
 	private int x;
-	private int y;
+	private int y; 
 	
 	public AddCommand() {
 		this.name = String.format("add");
@@ -15,67 +16,42 @@ public class AddCommand extends Command {
 	}
 	
 	public AddCommand(int x, int y) {
-		this();	//llama al constructor
+		this();
 		this.x = x;
 		this.y = y;
 	}
 
-	public boolean execute(Game game) {
-		boolean ok = false;
-		ok = game.addDefensiveObject(x, y);
-		if(ok) {
-		 game.computerActions();
+	public boolean execute(Game game) throws CommandExecuteException {
+		boolean ok = false;	
+		try {
+			ok = game.addDefensiveObject(x,y);
+			game.computerActions();
 		}
-		else {
-			System.out.println(Command.incorrectPosition);
+		catch (CommandExecuteException e) {
+			throw new CommandExecuteException(e.getMessage() + "\n[ERROR]: Falied to add slayer ", e.getCause());
 		}
+		
 		return ok;
 	}
 
 
-	//este es el antiguo metodo parse
-	/*
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		if (this.matchCommandName(commandWords[0])) {
 			if (commandWords.length != 3) {
-				System.err.println(Command.incorrectArgsMsg);
-				return null;
+				throw new CommandParseException("[ERROR]: Command " + this.name + " : " + Command.incorrectNumberOfArgsMsg);
 			}
 			else {
+				try {
 				this.y = Integer.parseInt(commandWords[2]);
 	    		this.x = Integer.parseInt(commandWords[1]);
-	    		return this;
+	    		return new AddCommand(this.x, this.y);
+				}
+				catch(NumberFormatException e) {
+					throw new CommandParseException("[ERROR]: Command " + this.name + " : unvalid argument, number expected: [a] <x> <y>", e);
+				}
 			}
 		}
 		return null;
 	}
-	*/
-	public Command parse(String[] commandWords) throws CommandParseException{
-		Command command = null;
-		if (this.matchCommandName(commandWords[0])){
-			if (commandWords.length != 3) {
-				throw new CommandParseException("[ERROR]: " + incorrectArgsMsg);
-				
-			}
-			else{
-				try {
-					this.y = Integer.parseInt(commandWords[2]);
-					this.x = Integer.parseInt(commandWords[1]);
-				} catch (NumberFormatException e) {
-					//TODO: handle exception
-					throw new CommandParseException("[ERROR]: "+ incorrectArgsMsg);
-				}
-				command = new AddCommand(this.x, this.y);
-			}
-
-			
-		}
-
-
-
-		
-		return command;
-	}
 	
-
 }

@@ -1,6 +1,7 @@
 package control.Commands;
 
-import Exceptions.CommandParseException;
+import exceptions.CommandExecuteException;
+import exceptions.CommandParseException;
 import logic.Game;
 
 public class LightFlashCommand extends Command {
@@ -11,16 +12,18 @@ public class LightFlashCommand extends Command {
 		this.details = String.format("Eliminate all vampires from the board except Dracula");
 	}
 
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws CommandExecuteException {
 		boolean ok = false;
-		ok = game.lightFlash();
-		if (ok) {
+		try {
+			ok = game.lightFlash();;
 			game.computerActions();
-		} else {
-			System.err.println(notEnoughtCoins);
+		}
+		catch (CommandExecuteException e) {
+			throw new CommandExecuteException(e.getMessage() + "%n[ERROR]: Falied to garlic pushh", e.getCause());
 		}
 		return ok;
 	}
+
 
 	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);

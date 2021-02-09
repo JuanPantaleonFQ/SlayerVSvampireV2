@@ -1,37 +1,32 @@
 package control.Commands;
 
-import Exceptions.CommandParseException;
+import exceptions.CommandExecuteException;
+import exceptions.CommandParseException;
 import logic.Game;
 
-public class GarlicPushCommand extends Command {
-
+public class GarlicPushCommand extends Command{
 	public GarlicPushCommand() {
 		this.name = String.format("garlic");
 		this.shortcut = String.format("g");
 		this.help = String.format("[g]arlic");
-		this.details = String.format("Push vampires one step back");
+		this.details = String.format("Push vampires one position back");
 	}
 
-	@Override
-	public boolean execute(Game game) {
-		boolean executed = false;
-		executed = game.garlicPush();
-		if (executed) {
+	public boolean execute(Game game) throws CommandExecuteException {
+		boolean ok = false;
+		try {
+			ok = game.garlicPush();
 			game.computerActions();
-		} else {
-
-			System.out.println(notEnoughtCoins);
-
 		}
-		return false;
+		catch (CommandExecuteException e) {
+			throw new CommandExecuteException(e.getMessage() + "%n[ERROR]: Falied to garlic pushh", e.getCause());
+		}
+		return ok;
 	}
 
-	@Override
+
 	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);
-		
 	}
-	
-	
 
 }

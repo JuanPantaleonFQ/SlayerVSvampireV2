@@ -1,9 +1,9 @@
 package control.Commands;
 
-import Exceptions.CommandParseException;
+import exceptions.CommandParseException;
 import logic.Game;
 
-public class ExitCommand extends Command {
+public class ExitCommand extends Command{
 	public ExitCommand() {
 		this.name = String.format("exit");
 		this.shortcut = String.format("e");
@@ -17,6 +17,7 @@ public class ExitCommand extends Command {
 		return false;
 	}
 
+	
 	public Command parse(String[] commandWords) throws CommandParseException {
 		return this.parseNoParamsCommand(commandWords);
 	}

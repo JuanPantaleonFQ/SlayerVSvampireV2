@@ -1,8 +1,6 @@
 package logic.GameObjects;
 
 
-import logic.GameObjects.GameObjectList;
-
 public class GameObjectBoard {
 	private GameObjectList list;
 	
@@ -37,20 +35,18 @@ public class GameObjectBoard {
 	public void removeDeadObjects() {
 		list.removeDeadObjects();
 	}
-	
-	public void GarlicPush() {
-		list.GarlicPush();
+
+	public void garlicPush() {
+		list.garlicPush();
 	}
 
-	public void LightFlash() {
-		list.LightFLash();
-		
-	}
-
-	public String serializeBoard(){
-		return list.serializeBoard();
+	public void lightFlash() {
+		list.lightFlash();
 	}
 	
+	public String serialize() {
+		return list.serialize();
+	}
 	
 	
 }

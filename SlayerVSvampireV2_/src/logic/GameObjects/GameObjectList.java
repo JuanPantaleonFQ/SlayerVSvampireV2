@@ -9,7 +9,7 @@ public class GameObjectList {
 		this.gameobjects = new ArrayList<GameObject>();
 	}
 	
-	public boolean positionAvaible(int x, int y) {	//comprueba por cada objeto si sus coordenadas coinciden con esa posicion.
+	public boolean positionAvaible(int x, int y) {
 		boolean avaible = true;
 		int i = 0;
 		while( i < gameobjects.size() && avaible) {
@@ -30,10 +30,7 @@ public class GameObjectList {
 	public void addnewObject(GameObject o) {
 		gameobjects.add(o);
 	}
-	/*
-	 * gameobject list, tiene atacar, a�adir, y el getAtacableinposition (max lineas de metodo 6) removeDead tambien va aqui
-	 *  
-	 */
+	
 	public IAttack getAttackableInPosition(int x, int y) {
 		IAttack other = null;
 		boolean found = false;
@@ -70,61 +67,37 @@ public class GameObjectList {
 	
 	public void removeDeadObjects() {
 		for(int i = 0; i < gameobjects.size(); i++) {
-			if(!gameobjects.get(i).isAlive()) {
-				gameobjects.get(i).damageExplosive();	
-				gameobjects.get(i).setCnt(); 				//como solo los objetos de tipo vampiro tienen el metodo setCnt
-				gameobjects.get(i).setAlive();
+			if(!gameobjects.get(i).isAlive() || gameobjects.get(i).outOfBoard()) {
 				gameobjects.remove(i);
 			}
 		}
 	}
 
-	public void GarlicPush() {
-		for (int i = 0; i < gameobjects.size(); i++) {
-			if (gameobjects.get(i).isAlive()) {
-				if (gameobjects.get(i).receiveGarlicPush() && gameobjects.get(i).outOfBoard()) {
-					gameobjects.get(i).setAlive();
-					gameobjects.get(i).setCnt();
-					gameobjects.remove(i);
-					
-					
-				}
-				
+	public void garlicPush() {
+		for(int i = 0; i < gameobjects.size(); i++) {
+			if(gameobjects.get(i).isAlive()) {
+				gameobjects.get(i).receiveGarlicPush();
+			}
+		}	
+	}
+
+	public void lightFlash() {
+		for(int i = 0; i < gameobjects.size(); i++) {
+			if(gameobjects.get(i).isAlive()) {
+				gameobjects.get(i).receiveFlashAttack();
 			}
 		}
-		
-		
 	}
-
-	public void LightFLash() {
-		for (int i = 0; i < gameobjects.size(); i++) {
-			if (gameobjects.get(i).isAlive()) {
-				if (gameobjects.get(i).receiveLightFlash()) {
-					gameobjects.get(i).setAlive();
-					gameobjects.get(i).setCnt();
-					gameobjects.remove(i);
-					i--;
-					
-				}
-				
-				
+	
+	public String serialize() {
+		String serialize = "";
+		for(int i = 0; i < gameobjects.size(); i++) {
+			if(gameobjects.get(i).isAlive()) {
+				serialize += gameobjects.get(i).serialize() + "\n";
 			}
 		}
-		
+		return serialize;
 	}
-
-	public String serializeBoard() {
-		String data ="";
-		for (int i = 0; i < gameobjects.size(); i++) {
-			data = data+ "\n"  + gameobjects.get(i).getObjectSerialized();
-			
-		}
-		return data;
-	}
-	
-	
-
-	
 
 
 }

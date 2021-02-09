@@ -1,9 +1,7 @@
 package control;
-
-import Exceptions.CommandParseException;
 import control.Commands.AddBloodBankCommand;
 import control.Commands.AddCommand;
-import control.Commands.AddVampireCommmand;
+import control.Commands.AddVampireCommand;
 import control.Commands.Command;
 import control.Commands.ExitCommand;
 import control.Commands.GarlicPushCommand;
@@ -11,25 +9,25 @@ import control.Commands.HelpCommand;
 import control.Commands.LightFlashCommand;
 import control.Commands.ResetCommand;
 import control.Commands.SaveCommand;
+import control.Commands.SerializeCommand;
 import control.Commands.SuperCoinsCommand;
 import control.Commands.UpdateCommand;
-import control.Commands.SerializeCommand;
+import exceptions.CommandParseException;
 
 public class CommandGenerator {
-	private static Command[] avaibleCommands = { 
-		 new AddCommand(),
-		 new HelpCommand(), 
-		 new ResetCommand(),
-		 new ExitCommand(), 
-		 new UpdateCommand(), 
-		 new SuperCoinsCommand(),
-		 new GarlicPushCommand(),
-	 	 new LightFlashCommand(), 
-		 new AddBloodBankCommand(),
-		 new AddVampireCommmand(),
-		 new SerializeCommand(),
-		 new SaveCommand(),
-
+	private static Command[] avaibleCommands = {
+			new AddCommand(),
+			new HelpCommand(),
+			new ResetCommand(),
+			new ExitCommand(),
+			new UpdateCommand(),
+			new AddBloodBankCommand(),
+			new GarlicPushCommand(),
+			new LightFlashCommand(),
+			new SuperCoinsCommand(),
+			new AddVampireCommand(),
+			new SerializeCommand(),
+			new SaveCommand()
 	};
 
 	public static Command parse(String[] parameters) throws CommandParseException {
@@ -39,8 +37,10 @@ public class CommandGenerator {
 			c = avaibleCommands[i].parse(parameters);
 			i++;
 		}
+		if (c == null) {
+			throw new CommandParseException("[ERROR]: Unknow command: press H for HELP");
+		}
 		return c;
-		
 	}
 	
 	public static String commandHelp() {

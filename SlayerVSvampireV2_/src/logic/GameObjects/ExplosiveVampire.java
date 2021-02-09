@@ -3,19 +3,26 @@ package logic.GameObjects;
 import logic.Game;
 
 public class ExplosiveVampire extends Vampire {
-	
-	//Atributos de explosive
-	
-	
-	//Constructor
+
 	public ExplosiveVampire(int xx, int yy, Game g) {
 		super(xx, yy, g);
-		this.health = 5;
 		this.info = "EV";
-		
-		
-		
 	}
+	
+	
+	public String toString() {
+		return this.info + " [" + this.health + "] ";
+	}
+	
+	public boolean receiveSlayerAttack(int max) {
+		this.health = this.health - max;
+		if (this.health == 0) {
+			Vampire.vampiresOnB--;
+			this.damageExplosive();
+		}
+		return true;
+	}
+	
 	public void damageExplosive() {
 		for (int i = (x-1); i < (x+2); i++) {
 			for(int j = (y-1); j < (y+2); j++) {
@@ -25,24 +32,6 @@ public class ExplosiveVampire extends Vampire {
 				}
 			}
 		}
-		
-		
 	}
-	
-	public String toString() {
-		return this.info + " [" +this.health+  "] ";
-	}
-
-	protected String getObjectSerialized() {
-		int advancebinary;					// 1-> significa que en el proximo ciclo avanza. 0 -> significa que no avanza en el proximo ciclo.
-		if (this.progress ==0) {
-			advancebinary = 1;			
-		}else{
-			advancebinary = 0;
-		}
-		
-		return (this.info + ";"+this.x+";"+this.y+";"+this.health+";"+ advancebinary);
-	}
-	
 
 }

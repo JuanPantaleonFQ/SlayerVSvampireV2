@@ -2,62 +2,54 @@ package logic.GameObjects;
 
 import logic.Game;
 
+public class Dracula extends Vampire{
+	private static boolean alive = false;
 
-public class Dracula extends Vampire {
-	
-	//Atributtes:
-	private static boolean DraculaOnBoard = false;
-		
-	//Constructor:
 	public Dracula(int xx, int yy, Game g) {
 		super(xx, yy, g);
-		Dracula.DraculaOnBoard = true;
-		this.health = 5;
 		this.info = "D";
-		
+		Dracula.alive = true;
 	}
-		
 	
-	//metodo de ataque para dracula
+	public static void init() {
+		Dracula.alive = false;
+	}
+	
+	public static boolean alive() {
+		return alive;
+	}
+
+	public boolean receiveSlayerAttack(int max) {
+		this.health = this.health - max;
+		if (this.health == 0) {
+			Vampire.vampiresOnB--;
+			Dracula.alive = false;
+		}
+		return true;
+	}
+
 	public void attack() {
-		if (isAlive()) {
+		if(isAlive()) {
 			IAttack other = game.getAttackableInPosition(x, y-1);
-			if (other != null) {
+			if(other != null) {
 				other.receiveVampireAttack(HARMD);
-			}	
+			}
 		}
-		
-		
-	}
-	//funcion que lo que hace es comprobar si ya hay un objeto dracula en el tablero
-	public static boolean Alive(){
-		return DraculaOnBoard;
-		
 	}
 	
-	public void setAlive() {
-		 Dracula.DraculaOnBoard = false;
+	public void receiveFlashAttack() {
 	}
 	
-	
-	
-	public boolean receiveLightFlash() {
-		return false;
-	}
-	
-	protected String getObjectSerialized() {
-		int advancebinary;					// 1-> significa que en el proximo ciclo avanza. 0 -> significa que no avanza en el proximo ciclo.
-		if (this.progress ==0) {
-			advancebinary = 1;			
-		}else{
-			advancebinary = 0;
+	public void receiveGarlicPush() {
+		this.progress = 0;
+		if (game.positionAvaible(this.x, this.y+1)) {
+			this.y++;
+			if (this.outOfBoard()) {
+				Vampire.vampiresOnB--;
+				Dracula.alive = false;
+			}
 		}
-		
-		return (this.info + ";"+this.x+";"+this.y+";"+this.health+";"+ advancebinary);
 	}
-	
-	
-	
-	
+
 
 }
