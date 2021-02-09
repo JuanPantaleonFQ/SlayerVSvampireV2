@@ -1,15 +1,2 @@
 Juan Pantaleon Femenia Quevedo
 Daniel Muñoz García
-
-
-
-//ejercicio
-realizemos un comando que se llame bombaCommand el cual haga da�o a todos los vampiros y sus tipos.
-
-
-
-
-//ANOTACIONES:
-
-
-1. cambiar el "how" de "show" en help command.
