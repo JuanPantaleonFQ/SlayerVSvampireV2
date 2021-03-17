@@ -1,2 +1,2 @@
 # SlayerVSvampireV2
-This game is currently in development.
+This game is developed. 16/03.
